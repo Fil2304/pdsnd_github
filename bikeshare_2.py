@@ -12,6 +12,7 @@ day_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunda
 decision_list = ['month','day','both']
 
 
+""" From here on are only fucntions """
 #this function check if the given string inculdes any number, which is importannt for the initial user input
 def hasNumbers(InputString):
     return any(char.isdigit() for char in InputString)
