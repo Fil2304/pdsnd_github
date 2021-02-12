@@ -2,7 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
-""" Here are all of the lists or dictionaries that will be used in the program """
+"""  Here are all of the lists or dictionaries that will be used in the program!  """
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -150,7 +150,7 @@ def load_data(city, month = None, day = None):
             df.pop('day_of_week')
 
     return df
-""" Here start all of the functions, that calculate statistics or output the raw data """
+"""  Here start all of the functions, that calculate statistics or output the raw data!  """
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
