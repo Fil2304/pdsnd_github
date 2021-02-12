@@ -7,8 +7,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-month_list = ['january','february','march','april','may','june','all']
-day_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday','all']
+months_list = ['january','february','march','april','may','june','all']
+days_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday','all']
 decision_list = ['month','day','both']
 
 
@@ -64,7 +64,7 @@ def get_filters():
                         month = input("Which month? January, February, March, April, May, or June? Or type 'all' to apply no month filter: ")
                         if (hasNumbers(month)):
                             raise ValueError
-                        if (month.lower() not in month_list):
+                        if (month.lower() not in months_list):
                             raise ValueError
                         break
                     except ValueError:
@@ -80,7 +80,7 @@ def get_filters():
                         day = input("Which day? Type the full weekday name, f.e. 'Monday' or type 'all' to apply no day filter: ")
                         if (hasNumbers(day)):
                             raise ValueError
-                        if (day.lower() not in day_list):
+                        if (day.lower() not in days_list):
                             raise ValueError
                         break
                     except ValueError:
@@ -133,7 +133,7 @@ def load_data(city, month = None, day = None):
         # if he does, filter by month if applicable
         if month != 'all':
             # use the index of the months list to get the corresponding int
-            month = month_list.index(month.lower())+1
+            month = months_list.index(month.lower())+1
             # filter by month to create the new dataframe
             df = df[df['month'] == month]
             df.pop('month')
