@@ -7,8 +7,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-month_list = ['january','february','march','april','may','june','all']
-day_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday','all']
+months_list = ['january','february','march','april','may','june','all']
+days_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday','all']
 decision_list = ['month','day','both']
 
 
@@ -16,6 +16,8 @@ decision_list = ['month','day','both']
 #this function check if the given string inculdes any number, which is importannt for the initial user input
 def hasNumbers(InputString):
     return any(char.isdigit() for char in InputString)
+
+
 
 def get_filters():
     """
@@ -43,6 +45,8 @@ def get_filters():
 
 
         # get user input on how they want to filter the data (which month, day and whether he wants to filter at all) and cover all possible exceptions that could happen
+
+
     while True:
         try:
             decision = input("Would you like to filter the data by month, day, both or not at all? Type 'none' for no time filter: ")
@@ -65,7 +69,7 @@ def get_filters():
                         month = input("Which month? January, February, March, April, May, or June? Or type 'all' to apply no month filter: ")
                         if (hasNumbers(month)):
                             raise ValueError
-                        if (month.lower() not in month_list):
+                        if (month.lower() not in months_list):
                             raise ValueError
                         break
                     except ValueError:
@@ -81,18 +85,22 @@ def get_filters():
                         day = input("Which day? Type the full weekday name, f.e. 'Monday' or type 'all' to apply no day filter: ")
                         if (hasNumbers(day)):
                             raise ValueError
-                        if (day.lower() not in day_list):
+                        if (day.lower() not in days_list):
                             raise ValueError
                         break
+
                     except ValueError:
                         print('This is not a valid weekday, please check your input and try it again!')
+
                     except KeyboardInterrupt:
                         print('\nNo Input was taken!')
                         break
 
             break
+
         except ValueError:
             print('This is not a valid option to choose from, please check your input and try it again!')
+
         except KeyboardInterrupt:
             print('\nNo Input was taken!')
             break
@@ -134,7 +142,7 @@ def load_data(city, month = None, day = None):
         # if he does, filter by month if applicable
         if month != 'all':
             # use the index of the months list to get the corresponding int
-            month = month_list.index(month.lower())+1
+            month = months_list.index(month.lower())+1
             # filter by month to create the new dataframe
             df = df[df['month'] == month]
             df.pop('month')
@@ -288,9 +296,12 @@ def raw_data(df):
                     except KeyboardInterrupt:
                         print('\nNo Input was taken!')
                         break
+
                 break
+
         except ValueError:
                 print('This is not a valid answer (yes or no) to choose from, please check your input and try it again!')
+
         except KeyboardInterrupt:
                 print('\nNo Input was taken!')
                 break
@@ -309,6 +320,7 @@ def main():
         raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
+        
         if restart.lower() != 'yes':
             print('Thank you for using the bikesharing database to gather some knowledge and I hope it could help you out, Goodbye!')
             break
