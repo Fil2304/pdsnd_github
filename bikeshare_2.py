@@ -16,6 +16,8 @@ decision_list = ['month','day','both']
 def hasNumbers(InputString):
     return any(char.isdigit() for char in InputString)
 
+
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -42,6 +44,8 @@ def get_filters():
 
 
         # get user input on how they want to filter the data (which month, day and whether he wants to filter at all) and cover all possible exceptions that could happen
+
+
     while True:
         try:
             decision = input("Would you like to filter the data by month, day, both or not at all? Type 'none' for no time filter: ")
@@ -83,15 +87,19 @@ def get_filters():
                         if (day.lower() not in days_list):
                             raise ValueError
                         break
+
                     except ValueError:
                         print('This is not a valid weekday, please check your input and try it again!')
+
                     except KeyboardInterrupt:
                         print('\nNo Input was taken!')
                         break
 
             break
+
         except ValueError:
             print('This is not a valid option to choose from, please check your input and try it again!')
+
         except KeyboardInterrupt:
             print('\nNo Input was taken!')
             break
@@ -287,9 +295,12 @@ def raw_data(df):
                     except KeyboardInterrupt:
                         print('\nNo Input was taken!')
                         break
+
                 break
+
         except ValueError:
                 print('This is not a valid answer (yes or no) to choose from, please check your input and try it again!')
+
         except KeyboardInterrupt:
                 print('\nNo Input was taken!')
                 break
@@ -308,6 +319,7 @@ def main():
         raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
+        
         if restart.lower() != 'yes':
             print('Thank you for using the bikesharing database to gather some knowledge and I hope it could help you out, Goodbye!')
             break
